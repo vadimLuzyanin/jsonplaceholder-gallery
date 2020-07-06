@@ -1,0 +1,17 @@
+.go_back_link {
+  position: fixed;
+  width: 5vw;
+  background-color: rgba(50, 50, 50, 0.1);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+.go_back_link:hover {
+  background-color: rgba(50, 50, 50, 0.2);
+}
+.go_back_link__arrow {
+  transform: rotate(180deg);
+  fill: #0f96d4;
+}

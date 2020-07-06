@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import AuthorsList from "./components/AuthorsList/AuthorsList";
+import Albums from "./components/Albums/Albums";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import Photos from "./components/Photos/Photos";
+import GoBackLink from "./components/GoBackLink/GoBackLink";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <div className='app'>
+          <GoBackLink />
+          <Switch>
+            <Redirect from="/" to="/authors/" exact />
+            <Redirect
+              from="/authors/:authorId"
+              to="/authors/:authorId/albums"
+              exact
+            />
+            <Redirect
+              from="/authors/:authorId/albums/:albumId"
+              to="/authors/:authorId/albums/:albumId/photos"
+              exact
+            />
+            <Route path="/authors/" exact>
+              <AuthorsList />
+            </Route>
+            <Route path="/authors/:authorId/albums" exact>
+              <Albums />
+            </Route>
+            <Route path="/authors/:authorId/albums/:albumId/photos" exact>
+              <Photos />
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
   );
-}
+};
 
 export default App;
