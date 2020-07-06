@@ -15,10 +15,10 @@ const Albums = () => {
   useEffect(() => {
     fetchAuthor(authorId, setLoading, setAuthor);
   }, [authorId]);
-
+  
   const albums = author.albums.map((album) => (
     <Link
-      to={`/authors/${authorId}/albums/${album.id}/photos`}
+      to={`${process.env.PUBLIC_URL}/authors/${authorId}/albums/${album.id}/photos`}
       key={album.id}
       className="link"
     >

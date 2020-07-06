@@ -8,33 +8,43 @@ import GoBackLink from "./components/GoBackLink/GoBackLink";
 
 const App = () => {
   return (
-      <BrowserRouter>
-        <div className='app'>
-          <GoBackLink />
-          <Switch>
-            <Redirect from="/" to="/authors/" exact />
-            <Redirect
-              from="/authors/:authorId"
-              to="/authors/:authorId/albums"
-              exact
-            />
-            <Redirect
-              from="/authors/:authorId/albums/:albumId"
-              to="/authors/:authorId/albums/:albumId/photos"
-              exact
-            />
-            <Route path="/authors/" exact>
-              <AuthorsList />
-            </Route>
-            <Route path="/authors/:authorId/albums" exact>
-              <Albums />
-            </Route>
-            <Route path="/authors/:authorId/albums/:albumId/photos" exact>
-              <Photos />
-            </Route>
-          </Switch>
-        </div>
-      </BrowserRouter>
+    <BrowserRouter>
+      <div className="app">
+        <GoBackLink />
+        <Switch>
+          <Redirect
+            from={`${process.env.PUBLIC_URL}/`}
+            to={`${process.env.PUBLIC_URL}/authors/`}
+            exact
+          />
+          <Redirect
+            from={`${process.env.PUBLIC_URL}/authors/:authorId`}
+            to={`${process.env.PUBLIC_URL}/authors/:authorId/albums`}
+            exact
+          />
+          <Redirect
+            from={`${process.env.PUBLIC_URL}/authors/:authorId/albums/:albumId`}
+            to={`${process.env.PUBLIC_URL}/authors/:authorId/albums/:albumId/photos`}
+            exact
+          />
+          <Route path={`${process.env.PUBLIC_URL}/authors/`} exact>
+            <AuthorsList />
+          </Route>
+          <Route
+            path={`${process.env.PUBLIC_URL}/authors/:authorId/albums`}
+            exact
+          >
+            <Albums />
+          </Route>
+          <Route
+            path={`${process.env.PUBLIC_URL}/authors/:authorId/albums/:albumId/photos`}
+            exact
+          >
+            <Photos />
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 };
 

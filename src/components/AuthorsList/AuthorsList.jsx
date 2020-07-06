@@ -14,7 +14,7 @@ const AuthorsList = () => {
   }, []);
 
   const authors = authorsList.map((author) => (
-    <Link to={`/authors/${author.id}/albums`} key={author.id} className="link">
+    <Link to={`${process.env.PUBLIC_URL}/authors/${author.id}/albums`} key={author.id} className="link">
       <div className={clsx(["list_item", styles.author])}>{author.name}</div>
     </Link>
   ));
